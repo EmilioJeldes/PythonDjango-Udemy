@@ -1,0 +1,16 @@
+# Create virtual env
+conda create -n name python=3.7
+
+
+# Access to that virtual env
+source activate name
+
+
+# Install Django
+pip install Django==2.1.2
+
+
+# Create Project
+django-admin startproject name-project
+
+

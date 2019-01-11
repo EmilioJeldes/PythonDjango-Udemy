@@ -1,0 +1,6 @@
+# Migrate initial apps
+python manage.py migrate
+
+
+# Indicarle a Django que hay cambios en algún modelo
+python manage.py makemigrations app_name 

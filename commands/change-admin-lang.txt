@@ -1,0 +1,47 @@
+/*=============================================
+=           Change Admin Panel App Name       =        
+==============================================*/
+
+
+# 1. In apps.py add verbose_name to change the name that appears on the admin panel of a model
+
+class AppNameConfig(AppConfig):
+    name = 'appname'
+	verbose_name = 'New name in new language'
+
+
+# 2. Register the new configuration override in settings.py on INSTALLED_APPS
+change the defaul 'appname' to 'appname.apps.AppNameConfig'
+
+
+/*=============================================
+=          Change Model Language or Name      =          
+==============================================*/
+
+
+# 1. In models.py, inside the Model class create a subclass Meta
+class Project(models.Model):
+    title = models.CharField(max_length = 200)
+    description = models.TextField()
+    image = models.ImageField()
+    created = models.DateTimeField(auto_now_add = True)
+    updated = models.DateTimeField(auto_now = True)
+
+	class Meta:
+		verbose_name = 'Proyecto'
+		verbose_name_plural = 'Proyectos'
+		// Por defecto de mas antiguo a mas nuevo, se cambia para poner los nuevos primero
+		ordering = ["-created"]
+
+
+# 2. Change Model displayed defining an overriden __str__ method
+	def __str__(self):
+		return self.title
+
+
+# 3. Change Model attribute names using verbose_name
+	title = models.CharField(max_length = 200, verbose_name = 'Titulo')
+    description = models.TextField(verbose_name = 'Descripcion')
+    image = models.ImageField(verbose_name = 'Imagen')
+    created = models.DateTimeField(auto_now_add = True, verbose_name = 'Fecha de creacion')
+    updated = models.DateTimeField(auto_now = True, verbose_name = 'Fecha de modificacion')

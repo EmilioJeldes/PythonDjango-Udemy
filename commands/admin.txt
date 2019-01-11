@@ -1,0 +1,12 @@
+/*=============================================
+=     Register your models into admin panel	  =              
+==============================================*/
+
+
+# Inside admin.py of the current app
+admin.site.register(Project)
+
+
+# Extend admin config to create readonly attributes
+
+
